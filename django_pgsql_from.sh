@@ -42,7 +42,9 @@ archive_tmp=$(mktemp "$archive_dir/.${archive_basename}.XXXXXX")
 tar -czf "$archive_tmp" \
     --exclude="venv" --exclude=".venv" \
     --exclude="$archive_basename" \
-    --exclude="$(basename -- "$archive_tmp")" .
+    --exclude="$(basename -- "$archive_tmp")" \
+    --exclude="./$(basename -- "$archive_tmp")" \
+    --exclude="$(basename -- "$0")" .
 mv -f -- "$archive_tmp" "$archive_path"
 
 unset PGPASSWORD
