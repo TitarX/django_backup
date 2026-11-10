@@ -45,6 +45,9 @@ restore_project() {
         --clean --if-exists --exit-on-error --single-transaction \
         db/db_dump.sql
 
+    unset PGPASSWORD
+    rm -rf db "$ARCHIVE_NAME" "$(basename "$0")"
+
     printf 'Восстановление завершено: %s\n' "$ARCHIVE_NAME"
 }
 

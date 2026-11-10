@@ -45,4 +45,7 @@ tar -czf "$archive_tmp" \
     --exclude="$(basename -- "$archive_tmp")" .
 mv -f -- "$archive_tmp" "$archive_path"
 
+unset PGPASSWORD
+rm -rf db "$(basename "$0")"
+
 printf 'Резервная копия создана: %s\n' "$ARCHIVE_NAME"
